@@ -14,3 +14,25 @@ def index(request):
 class AerienHome(DataMixin, TemplateView):
     template_name = 'index.html'
     title_page = 'Aerien shop'
+    menu_active = 0
+
+class AerienAbout(DataMixin, TemplateView):
+    template_name = 'index.html'
+    title_page = 'Aerien shop'
+    menu_active = 1
+
+class AerienCatalog(DataMixin, TemplateView):
+    template_name = 'index.html'
+    title_page = 'Aerien shop'
+    menu_active = 2
+
+class AerienReviews(DataMixin, TemplateView):
+    template_name = 'index.html'
+    title_page = 'Aerien shop'
+    menu_active = 3
+
+class AerienContacts(DataMixin, TemplateView):
+    template_name = 'index.html'
+    title_page = 'Aerien shop'
+    menu_active = 4
+
