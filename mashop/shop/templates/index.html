@@ -1,65 +1,36 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<p>
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. At maxime ut libero necessitatibus, ratione amet nisi adipisci praesentium nemo dolor suscipit a earum eveniet labore tempore et pariatur laboriosam voluptas.</h1>
-</p>
-<p>
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam molestias maiores eum ea nisi tenetur accusamus alias nostrum expedita at illo, a odio non consectetur, quia in quae. Eos, culpa?</h1>
-</p>
-<p>
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta blanditiis molestiae alias sunt ipsam sed officiis reiciendis magnam eos, dolores id, provident error debitis assumenda obcaecati quae tempore iusto laudantium?</h1>
-</p>
-<p>
-    <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores ratione hic dolores ab accusantium dolorem voluptatum ipsum laudantium commodi odio quas voluptas tempore, officia libero, nesciunt repellendus veniam. Libero, sequi.</h1>
-</p>
-<p>
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda voluptatum culpa molestiae quidem soluta veniam voluptatibus nostrum quae facere, libero sunt illum debitis. Voluptatibus a officia cum repellendus temporibus doloremque.</h1>
-</p>
-<p>
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus maiores saepe quo maxime. Fugiat consectetur voluptates minima illo! Explicabo at laudantium voluptate dolorem molestiae a perferendis, modi porro quam assumenda.</h1>
-</p>
-<p>
-    <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla distinctio maxime necessitatibus fuga? Autem adipisci temporibus, sint laudantium aliquam, quia deserunt libero maxime vel rerum provident quisquam maiores voluptas eum.</h1>
-</p>
-<p>
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam ducimus odio quis odit, suscipit inventore consequuntur obcaecati amet sunt! Consectetur fugit provident consequatur inventore eveniet minus veniam repudiandae non nihil.</h1>
-</p>
-<p>
-    <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima, sunt explicabo similique minus impedit, quam cumque consequatur unde voluptatum voluptatibus inventore aspernatur veniam dolor consequuntur repellat id. Voluptate, reprehenderit veritatis.</h1>
-</p>
-<p>
-    <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga dolor nihil illo sunt sequi? Impedit nisi placeat aut distinctio enim fugit quisquam modi nobis, amet est delectus ab perspiciatis unde!</h1>
-</p>
-<p>
-    <h1>Soon</h1>
-</p>
-<p>
-    <h1>Soon</h1>
-</p>
-<p>
-    <h1>Soon</h1>
-</p>
-<p>
-    <h1>Soon</h1>
-</p>
-<p>
-    <h1>Пися</h1>
-</p>
-<p>
-    <h1>Soon</h1>
-</p>
-<p>
-    <h1>Soon</h1>
-</p>
-<p>
-    <h1>Soon</h1>
-</p>
-<p>
-    <h1>Soon</h1>
-</p>
-<p>
-    <h1>Soon</h1>
-</p>
-
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 col-md-12">
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{% static 'images/index-page/car-img.jpeg' %}" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'images/index-page/car-img2.jpeg' %}" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'images/index-page/car-img3.jpeg' %}" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+</div>
 {% endblock content %}

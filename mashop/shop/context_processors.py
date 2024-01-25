@@ -1,8 +1,8 @@
 menu = [
     {'id': 0, 'title': 'Home', 'url_name': 'home'},
-    {'id': 2, 'title': 'Catalog', 'url_name': 'catalog'},
-    {'id': 3, 'title': 'Reviews', 'url_name': 'reviews'},
-    {'id': 4, 'title': 'Contacts', 'url_name': 'contacts'}
+    {'id': 1, 'title': 'Catalog', 'url_name': 'catalog'},
+    {'id': 2, 'title': 'Reviews', 'url_name': 'reviews'},
+    {'id': 3, 'title': 'Contacts', 'url_name': 'contacts'}
 ]
 
 

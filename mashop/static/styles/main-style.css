@@ -12,6 +12,10 @@ footer {
     z-index: 2;
 }
 
+footer.border-top {
+    border-color: rgb(49, 90, 76);
+}
+
 body {
     font-family: Salsa, serif;
     background-color: rgb(131, 140, 150);
@@ -19,14 +23,58 @@ body {
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
+    min-height: 100vh;
+}
+
+div.page-container {
+    position: relative;
+    min-height: 100vh;
 }
 
 .navbar-brand .navbar-logo {
-    height: 100px;
+    height: 60px;
     width: auto;
 }
 
 a.nav-link {
     display: block;
     height: 100%;
+}
+
+div.nav-logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section {
+    padding-bottom: 2.5rem;
+}
+
+div.carousel {
+    margin-top: 1em;
+}
+
+div.carousel-inner {
+    max-height: 400px;
+}
+
+.btn-primary {
+    --bs-btn-bg: #495057 !important;
+    --bs-btn-border-color: #495057 !important; 
+}
+
+div.card {
+    background-color: rgb(116, 133, 152);
+}
+
+p.card-text {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
 }

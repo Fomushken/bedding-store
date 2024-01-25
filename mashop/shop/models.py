@@ -17,7 +17,6 @@ class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.DO_NOTHING)
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
-    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     stock = models.PositiveIntegerField()
@@ -30,9 +29,12 @@ class Product(models.Model):
     #     return reverse()
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('-created', 'name',)
         index_together = (('id', 'slug'),)
 
     def __str__(self):
         return self.name
 
+class ProductsGallery(models.Model):
+    image = models.ImageField(upload_to='static/images/products/', blank=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
