@@ -1,0 +1,14 @@
+<ul class="list-group">
+    {% if cat_selected == 0 %}
+<li class="list-group-item active">All categories</li>
+{% else %}
+<a href="{% url 'catalog' %}"><li class="list-group-item">All categories</li></a>
+{% endif %}
+{% for cat in cats %}
+{% if cat.id == cat_selected %}
+<li class="list-group-item active" aria-current="true">{{cat.name}}</li>
+{% else %}
+<a href="{{ cat.get_absolute_url }}"><li class="list-group-item">{{ cat.name }}</li></a>
+{% endif %}
+{% endfor %}
+</ul>

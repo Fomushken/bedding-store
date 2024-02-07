@@ -1,4 +1,6 @@
 {% load static %}
+{% load shoptags %}
+{% get_categories as categories %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,11 +21,16 @@
     />
     <title>{{ title|default:"Aerien shop"}}</title>
   </head>
-  <body style="background-image: url('{% static 'images/background.jpg' %}')">
+  <body>
     <div class="page-container">
       <header>
         <nav class="navbar navbar-expand-lg">
           <div class="container-fluid">
+            <div class="nav-logo mx-4">
+              <a class="navbar-brand" href="{% url 'home' %}"
+                ><img class="navbar-logo" src="{% static 'images/aerien-blue-logo.png' %}"
+              /></a>
+            </div>
       
             <button
               class="navbar-toggler"
@@ -38,54 +45,49 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
-                {% for m in mainmenu %} {% if m.id == menu_active %}
+                {% for cat in categories %} {% if cat.id == cat_selected %}
                 <li class="nav-item">
                   <a
-                    class="nav-link active"
+                    class="nav-link disabled"
                     aria-current="page"
-                    href="{% url m.url_name %}"
-                    >{{ m.title }}</a
+                    href="{{ cat.get_absolute_url }}"
+                    >{{ cat.name }}</a
                   >
                 </li>
                 {% else %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url m.url_name %}"
-                    >{{ m.title }}</a
+                  <a class="nav-link" href="{{ cat.get_absolute_url }}"
+                    >{{ cat.name }}</a
                   >
                 </li>
                 {% endif %} {% endfor %}
               </ul>
             </div>
-            <div class="nav-logo">
-              <a class="navbar-brand" href="{% url 'home' %}"
-                ><img class="navbar-logo" src="{% static 'images/logo.png' %}"
-              /></a>
-            </div>
           </div>
         </nav>
       </header>
       <section>
-          <div class="container-fluid">
+          <div class="container-fluid content-container">
               {% block content %}
               {% endblock content %}
           </div>
       </section>
-      <footer class="mt-4 border-top">
+      <footer class="mt-4">
         <div class="container-fluid">
           <div class="row">
               <div class="col-lg-4 col-md-12 footer-text text-center">
                   <p> 2024</p>
               </div>
               <div class="col-lg-4 col-md-12 footer-text text-center">
-                  <p>Contacts<br>Job<br>Our Team</p>
+                  <p><a class="nav-link" href="{% url 'reviews' %}">Reviews</a></p>
               </div>
               <div class="col-lg-4 col-md-12 media-links">
                 <p>My contacts:<br>
-                <a href="https://t.me/Fomushken" class=""><img style="width: 40px; margin-right: 1em;" src="{% static 'images/index-page/tg_logo.png' %}" alt="telegram"></a>
-                <a href="https://github.com/Fomushken"><img style="width: 40px; margin-inline: 1em;" src="{% static 'images/index-page/github-mark.png' %}" alt="github"></a>
-                <a href="mailto:marat.fominn@gmail.com"><img style="width: 40px; margin-inline: 1em;" src="{% static 'images/index-page/envelope.png' %}" alt="e-mail"></a>
+                <a href="https://t.me/Fomushken" class="contact-link"><img src="{% static 'images/index-page/tg_logo.png' %}" alt="telegram"></a>
+                <a href="https://github.com/Fomushken" class="contact-link"><img src="{% static 'images/index-page/github-mark.png' %}" alt="github"></a>
+                <a href="mailto:marat.fominn@gmail.com" class="contact-link"><img src="{% static 'images/index-page/envelope.png' %}" alt="e-mail"></a>
               </p>
-              </div>w
+              </div>
           </div>
       </div>
       </footer>
