@@ -1,3 +1,5 @@
+from cart.cart import Cart
+
 menu = [
     {'id': 0, 'title': 'Home', 'url_name': 'home'},
     {'id': 1, 'title': 'Catalog', 'url_name': 'catalog'},
@@ -7,4 +9,5 @@ menu = [
 
 
 def get_aerien_context(request):
-    return {'mainmenu': menu}
+    return {'mainmenu': menu,
+            'cart': Cart(request)}

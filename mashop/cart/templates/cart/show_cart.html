@@ -9,9 +9,9 @@
         <th>Image</th>
         <th>Product</th>
         <th>Quantity</th>
-        <th>Remove</th>
         <th>Unit price</th>
         <th>Price</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -25,14 +25,14 @@
                               {% else %}
                               {% static 'images/no_image.png' %}
                               {% endif %}"
-                         alt="prod-img">
+                         alt="prod-img" class="product_img_mini">
                 </a>
             </td>
             <td>{{ product.name }}</td>
             <td>{{ item.quantity }}</td>
-            <td><a href="{% url 'cart:cart_remove' product.id %}">Remove</a></td>
             <td class="num">${{ item.price }}</td>
             <td class="num">${{ item.total_price }}</td>
+            <td><a href="{% url 'cart:cart_remove' product.id %}">X</a></td>
         </tr>
         {% endwith %}
     {% endfor %}

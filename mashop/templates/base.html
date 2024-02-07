@@ -45,7 +45,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
-                {% for cat in categories %} {% if cat.id == cat_selected %}
+                {% for cat in categories %}
+                {% if cat.id == cat_selected %}
                 <li class="nav-item">
                   <a
                     class="nav-link disabled"
@@ -62,6 +63,21 @@
                 </li>
                 {% endif %} {% endfor %}
               </ul>
+            </div>
+            <div class="cart-link-parent" id="cart-link">
+              <div class="cart">
+                {% with total_items=cart|length %}
+                    {% if cart|length > 0 %}
+                        Your cart:
+                        <a href="{% url "cart:show_cart" %}">
+                            {{ total_items }} item{{ total_items|pluralize }},
+                            ${{ cart.get_total_price }}
+                        </a>
+                    {% else %}
+                        Your cart is empty.
+                    {% endif %}
+                {% endwith %}
+            </div>
             </div>
           </div>
         </nav>
