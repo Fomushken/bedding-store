@@ -68,8 +68,8 @@
               <div class="cart">
                 {% with total_items=cart|length %}
                     {% if cart|length > 0 %}
-                        Your cart:
-                        <a href="{% url "cart:show_cart" %}">
+                    <a href="{% url "cart:show_cart" %}">
+                          Your cart:
                             {{ total_items }} item{{ total_items|pluralize }},
                             ${{ cart.get_total_price }}
                         </a>
