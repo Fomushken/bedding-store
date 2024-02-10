@@ -13,6 +13,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r7!y@7dw7+)-cn^zv%2=g1x619kzrviresd1qs-&8a&^31k@-5'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -150,7 +156,7 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 
 EMAIL_HOST_USER = 'skinner.fomin@yandex.ru'
-EMAIL_HOST_PASSWORD = 'ukmuwijcvkgoxmxy'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
