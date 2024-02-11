@@ -40,3 +40,4 @@ class OrderAdmin(admin.ModelAdmin):
                     'paid', 'created', 'updated']
     list_filter = ['paid', 'created', 'updated']
     inlines = [OrderItemInline]
+    actions = [export_to_csv]

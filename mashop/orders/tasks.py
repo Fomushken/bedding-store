@@ -11,7 +11,8 @@ def order_created(order_id):
     order = Order.objects.get(id=order_id)
     subject = f'Order number {order_id}'
     message = (f'Dear {order.first_name}, \n\nYou have succesfully placed an order.\n'
-               f'Your order is {order.id}')
+               f'Your order is {order.id}'
+               f'Do not reply, please.')
     mail_sent = send_mail(subject,
                           message,
                           'skinner.fomin@yandex.ru',
