@@ -15,8 +15,15 @@
     <p>Total: ${{ cart.get_total_price }}</p>
 </div>
 <form action="." method="post" class="order-form">
-    {{ form.as_p }}
-    <p><input type="submit" value="Place order"></p>
     {% csrf_token %}
+    <div class="form-error">{{ form.non_field_errors }}</div>
+    <p><span class="form-label">First Name</span>{{ user.first_name }}</p>
+    <p><span class="form-label">Last Name</span>{{ user.last_name }}</p>
+    <p><span class="form-label">Email</span>{{ user.email }}</p>
+    {% for f in form %}
+    <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+    <div class="form-error">{{ f.errors }}</div>
+    {% endfor %}
+    <p><input type="submit" value="Place order"></p>
 </form>
 {% endblock %}

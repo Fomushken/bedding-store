@@ -66,17 +66,28 @@
             </div>
             <div class="cart-link-parent" id="cart-link">
               <div class="cart">
-                {% with total_items=cart|length %}
-                    {% if cart|length > 0 %}
-                    <a href="{% url "cart:show_cart" %}">
-                          Your cart:
-                            {{ total_items }} item{{ total_items|pluralize }},
-                            ${{ cart.get_total_price }}
-                        </a>
-                    {% else %}
-                        Your cart is empty.
-                    {% endif %}
-                {% endwith %}
+
+                  {% if user.is_authenticated %}
+                  <a href="#">{{ user.username }}</a> |
+                  <form action="{% url 'users:logout' %}" method="post">
+                      {% csrf_token %}
+                      <button type="submit" class="nav-link"> logout</button>
+                  </form>
+                    {% with total_items=cart|length %}
+                      {% if cart|length > 0 %}
+                      <a href="{% url "cart:show_cart" %}">
+                            Your cart:
+                              {{ total_items }} item{{ total_items|pluralize }},
+                              ${{ cart.get_total_price }}
+                           </a>
+                       {% else %}
+                           Your cart is empty.
+                       {% endif %}
+                     {% endwith %}
+                  {% else %}
+                  <a href="{% url 'users:login' %}">Login</a> | <a href="{% url 'users:register' %}">Sign in</a>
+                  {% endif %}
+
             </div>
             </div>
           </div>

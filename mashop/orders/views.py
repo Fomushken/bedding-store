@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from django.views import View
 
@@ -20,6 +21,10 @@ class CreateOrderView(DataMixin, View):
         cart = Cart(request)
         form = OrderCreateForm(request.POST)
         if form.is_valid():
+            form.instance.first_name = request.user.first_name
+            form.instance.last_name = request.user.last_name
+            form.instance.email = request.user.email
+            form.instance.user = get_user_model().objects.get(pk=request.user.pk)
             order = form.save()
             for item in cart:
                 OrderItem.objects.create(order=order,

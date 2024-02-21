@@ -1,18 +1,24 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from shop.models import Product
 
 
 class Order(models.Model):
-    first_name = models.CharField(max_length=60, verbose_name='First Name')
-    last_name = models.CharField(max_length=60, verbose_name='Last Name')
-    email = models.EmailField(verbose_name='Email')
+    first_name = models.CharField(max_length=60, verbose_name='First Name*')
+    last_name = models.CharField(max_length=60, verbose_name='Last Name*')
+    email = models.EmailField(verbose_name='Email*')
     delivery = models.BooleanField(default=False, verbose_name='Deliver')
-    city = models.CharField(max_length=100, verbose_name='City')
-    address = models.CharField(max_length=300, blank=True, verbose_name='Address(if deliver required)')
-    postal_code = models.CharField(max_length=20, blank=True, verbose_name='Postal code(if deliver required')
+    city = models.CharField(max_length=100, verbose_name='City*')
+    address = models.CharField(max_length=300, blank=True, verbose_name='Address')
+    postal_code = models.CharField(max_length=20, blank=True, verbose_name='Postal code')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
+    user = models.ForeignKey(get_user_model(),
+                             related_name='orders',
+                             on_delete=models.SET_DEFAULT,
+                             blank=True,
+                             default=1)
 
     class Meta:
         ordering = ('-created', )
