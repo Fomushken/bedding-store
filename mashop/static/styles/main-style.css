@@ -291,3 +291,9 @@ button.logout-btn {
 	min-width: 200px;
 	font-size: 16px;
 }
+
+div.order-info {
+    border-style: solid;
+
+    border-color: black;
+}
