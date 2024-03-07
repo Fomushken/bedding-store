@@ -1,3 +1,6 @@
+from django.http import HttpResponse
+
+
 class DataMixin:
     paginate_by = 9
     title_page = None

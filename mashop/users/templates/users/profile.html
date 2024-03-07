@@ -13,7 +13,7 @@
     <a href="{% url 'users:change_profile' %}" class="btn" role="button" >Edit</a>
     <a href="{% url 'users:password_change' %}" class="btn" role="button">Change password</a></div>
 <div class="profile-orders col-lg-6 col-md-12 my-4">
-    {% for order in user.orders.all %}
+    {% for order in orders %}
     <div class="order-info">
         <p>Order number: {{ order.id }}</p>
         <p>Paid: {{ order.paid|yesno }}</p>

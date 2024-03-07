@@ -1,9 +1,11 @@
+from typing import Any
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, TemplateView, UpdateView
+from django.views.generic import CreateView, ListView, DetailView, TemplateView, UpdateView
 
 from users.forms import UserPasswordChangeForm
 from shop.utils import DataMixin
@@ -25,11 +27,17 @@ class RegisterUser(DataMixin, CreateView):
     title_page = 'Registration'
     success_url = reverse_lazy('users:login')
 
-class ProfileUser(DataMixin, LoginRequiredMixin, TemplateView):
+
+class ProfileUser(DataMixin, LoginRequiredMixin, ListView):
     template_name = 'users/profile.html'
+    context_object_name = 'orders'
+
+    def get_queryset(self) -> QuerySet[Any]:
+        return self.request.user.orders.select_related('user')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        return self.get_mixin_context(context)
 
 
 class ChangeProfileUser(DataMixin, UpdateView):
