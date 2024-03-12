@@ -314,3 +314,7 @@ ul.pagination {
     display: flex;
     justify-content: center;
 }
+
+div.order-created {
+    text-align: center;
+}
