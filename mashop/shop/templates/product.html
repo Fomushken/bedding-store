@@ -14,12 +14,11 @@
         <form action="{% url 'cart:cart_add' product.id %}" method="post">
             {{ cart_add_form }}
             {% csrf_token %}
-<!--            <input type="submit" value="Add to cart">-->
             <button type="submit" class="btn btn-outline-secondary" >Add to cart</button>
         </form>
-        <p><a href="#" class="nav-link">Reviews(3)</a></p>
+        <p><a href="{% url 'reviews' %}" class="nav-link">Reviews(3)</a></p>
         <br>
-        {{ product.description|linenumbers|linebreaks }}
+        {{ product.description|linebreaks }}
     </div>
 </div>
 {% endblock %}

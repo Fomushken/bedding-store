@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ title }}</h1>
 
-<form method="post">
+<form class="auth-form" method="post">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}" />
      <div class="form-error">{{ form.non_field_errors }}</div>
@@ -11,6 +10,6 @@
     <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
     <div class="form-error">{{ f.errors }}</div>
     {% endfor %}
-    <p><button type="submit">Регистрация</button> </p>
+    <p><button type="submit">Sign up</button> </p>
 </form>
 {% endblock %}

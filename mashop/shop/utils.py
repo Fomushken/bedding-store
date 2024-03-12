@@ -2,7 +2,7 @@ from django.http import HttpResponse
 
 
 class DataMixin:
-    paginate_by = 9
+    paginate_by = 6
     title_page = None
     menu_active = None
     cat_selected = None
