@@ -248,11 +248,6 @@ form.to-cart-btn-form {
     text-align: right;
 }
 
-form.auth-form {
-    margin-left: 20%;
-    margin-top: 10em;
-}
-
 table.cart {
     width: 100%;
 }
@@ -295,9 +290,7 @@ button.logout-btn {
 }
 
 div.order-info {
-    border-style: solid;
-
-    border-color: black;
+    margin-left: 5%;
 }
 
 li.page-item>a.page-link {
@@ -317,4 +310,54 @@ ul.pagination {
 
 div.order-created {
     text-align: center;
+}
+
+form.order-form, form.auth-form {
+    border-radius: 5px;
+    background-color: #d6cec6;
+    padding-left: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+form.auth-form {
+    margin-left: 15%;
+    margin-top: 6em;
+    margin-right: 15%;
+    margin-bottom: 6em;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 16.7%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+  
+input[type=submit], form.auth-form button[type=submit] {
+    margin-left: 3em;
+    background-color: #EDE4DC;
+    color: black;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+input[type=submit]:hover {
+    background-color: #635e59;
+    color: white;
 }
