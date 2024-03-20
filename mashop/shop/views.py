@@ -1,31 +1,16 @@
 from typing import Any
 from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
-from django.http import HttpResponse
+from django.forms import BaseModelForm
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import TemplateView, ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 
 from cart.forms import CartAddProductForm
 from .utils import DataMixin
-from .models import Product
-
-
-# class AerienHome(DataMixin, TemplateView):
-#     template_name = 'index.html'
-#     title_page = 'Aerien shop'
-#     menu_active = 0
-
-
-# class AerienCatalog(DataMixin, ListView):
-#     template_name = 'catalog.html'
-#     context_object_name = 'products'
-#     title_page = 'Catalog - Aerien shop'
-#     menu_active = 1
-#     paginate_by = 9
-#     cat_selected = 0
-
-#     def get_queryset(self):
-#         return Product.objects.filter(is_published=True).select_related('category')
+from .models import Product, ProductsReviews
+from .forms import ReviewCreateForm
 
 
 class AerienHome(DataMixin, ListView):
@@ -88,3 +73,32 @@ class AerienContacts(DataMixin, TemplateView):
     template_name = 'contacts.html'
     title_page = 'Contacts - Aerien shop'
     menu_active = 3
+
+
+class ProductReview(DataMixin, ListView):
+    model = ProductsReviews
+    template_name = 'product_reviews.html'
+    context_object_name = 'reviews'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product = Product.objects.get(slug=self.kwargs['product_slug'])
+        title = 'Reviews for {}'.format(product.name)
+        return self.get_mixin_context(context,product = product, title=title)
+
+    def get_queryset(self):
+        return ProductsReviews.objects.filter(product_id=Product.objects.get(slug=self.kwargs['product_slug']).id)
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Product.objects.filter(is_published=True), slug=self.kwargs['product_slug'])
+
+class ProductsReviewCreate(DataMixin, CreateView):
+    form_class = ReviewCreateForm
+    template_name = 'create_review.html'
+    title_page = 'Review'
+
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
+        w = form.save(commit=False)
+        w.author = self.request.user
+        w.product = Product.objects.get(slug=self.kwargs['product_slug'])
+        return super().form_valid(form)

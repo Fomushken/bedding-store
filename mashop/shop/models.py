@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth import get_user_model
@@ -46,5 +47,16 @@ class ProductsGallery(models.Model):
     image = models.ImageField(upload_to='images/products/', blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
 
-# class ProductsReviews(models.Model):
-#     author = models.ForeignKey(get_user_model(), related_name='reviews', on_delete=models)
+
+class ProductsReviews(models.Model):
+    author = models.ForeignKey(get_user_model(), related_name='reviews', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    photo = models.ImageField(upload_to=f'images/products/review', blank=True)
+    review_text = models.TextField(blank=True, max_length=500)
+    datetime = models.DateTimeField(auto_now_add=True, db_index=True)
+    rating = models.IntegerField(choices=({k: k for k in range(1, 6)}), blank=False, default=5,
+                                 validators=[MaxValueValidator(limit_value=5)])
+    
+    def get_absolute_url(self):
+        return reverse('reviews', kwargs={'product_slug': self.product.slug})
+    

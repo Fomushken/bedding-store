@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="main-container">
+    <div class="container-fluid top">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <h1>{{ title }}</h1>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <a href="{% url 'create_review' product.slug %}" class="review-link">Add review</a>
+            </div>
+        </div>
+    </div>
+    <div class="content-container mt-4">
+        {% if reviews %}
+        {% for review in reviews %}
+        <li><div class="article-panel">
+            <p class="first">Added: {{review.datetime|date:"d.m.Y   в H:i"}} <br> Author:
+            {{ review.author.first_name|default:'unknown' }}</p>
+        </div>
+        <div class="review-self">
+            {% if review.photo %}
+            <img class="img-review" src="{{ review.photo.url }}">
+            {% endif %}
+            {% autoescape off %}
+                    <p>{{ review.review_text|linebreaks }}</p>
+            {% endautoescape %}
+            </div>
+            {% if not forloop.last %}
+            <hr>
+            {% endif %}
+        {% endfor %}
+        {% else %}
+            <p>Sorry, </p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

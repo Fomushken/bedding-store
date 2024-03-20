@@ -16,7 +16,7 @@
             {% csrf_token %}
             <button type="submit" class="btn btn-outline-secondary" >Add to cart</button>
         </form>
-        <p><a href="{% url 'reviews' %}" class="nav-link">Reviews(3)</a></p>
+        <p><a href="{% url 'reviews' product.slug %}" class="nav-link">Reviews ({{ product.reviews.count }})</a></p>
         <br>
         {{ product.description|linebreaks }}
     </div>

@@ -5,6 +5,16 @@ a {
     color: #243E5E;
 }
 
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h1 {
+    margin-top: 1em;
+    /* margin-bottom: 1em; */
+}
+
 header {
     background-color: #EDE4DC;
     z-index: 3;
@@ -312,7 +322,7 @@ div.order-created {
     text-align: center;
 }
 
-form.order-form, form.auth-form {
+form.order-form, form.auth-form, form.review-form {
     border-radius: 5px;
     background-color: #d6cec6;
     padding-left: 40px;
@@ -320,7 +330,7 @@ form.order-form, form.auth-form {
     padding-bottom: 40px;
 }
 
-form.auth-form {
+form.auth-form, form.review-form {
     margin-left: 15%;
     margin-top: 6em;
     margin-right: 15%;
@@ -335,6 +345,15 @@ input[type=text], input[type=email], input[type=password] {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+textarea {
+    margin: 8px, 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: none;
 }
 
 select {
@@ -360,4 +379,31 @@ input[type=submit], form.auth-form button[type=submit] {
 input[type=submit]:hover {
     background-color: #635e59;
     color: white;
+}
+
+div.article-panel {
+	background: #eee;
+	padding: 5px 10px 5px 10px;
+	box-sizing: border-box;
+	overflow: hidden;
+	color: #555;
+    margin-inline: 1em;
+}
+
+div.review-self {
+    margin-left: 2em;
+}
+
+img.img-review {
+	max-width: 170px;
+	height: auto;
+	padding: 0 10px 10px 0;
+}
+
+li {
+    list-style: none;
+}
+
+a.review-link {
+    font-size: 1.5rem;
 }
