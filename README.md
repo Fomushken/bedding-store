@@ -1,6 +1,7 @@
 <h1>Online store made using Django</h1>
 <hr>
 This is a Django online bedding store project with a shopping cart, user profile and asynchronous order processing that I implemented using Celery and RabbitMQ. For the frontend I used bootstrap.<br>
+You can see it on https://fomushken.pythonanywhere.com/ or launch it on your computer using the instruction below<br>
 <h2>Launching</h2>
 <hr>
 1. Clone the repository or download the code in a ZIP archive and extract it to your computer<br>
